@@ -51,28 +51,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 29);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 25);
+            this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "File";
             // 
             // fileInput
             // 
             this.fileInput.Enabled = false;
-            this.fileInput.Location = new System.Drawing.Point(133, 23);
-            this.fileInput.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fileInput.Location = new System.Drawing.Point(66, 12);
             this.fileInput.Name = "fileInput";
-            this.fileInput.Size = new System.Drawing.Size(817, 31);
+            this.fileInput.Size = new System.Drawing.Size(410, 20);
             this.fileInput.TabIndex = 1;
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(966, 17);
-            this.browseButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.browseButton.Location = new System.Drawing.Point(483, 9);
             this.browseButton.Name = "browseButton";
-            this.browseButton.Size = new System.Drawing.Size(150, 44);
+            this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 2;
             this.browseButton.Text = "Browse";
             this.browseButton.UseVisualStyleBackColor = true;
@@ -81,20 +78,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 147);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(12, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 25);
+            this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Detected Font:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(448, 570);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(224, 296);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 25);
+            this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Convert All To:";
             // 
@@ -103,28 +98,25 @@
             this.fontList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.fontList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.fontList.FormattingEnabled = true;
-            this.fontList.Location = new System.Drawing.Point(614, 562);
-            this.fontList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.fontList.Location = new System.Drawing.Point(307, 292);
             this.fontList.Name = "fontList";
-            this.fontList.Size = new System.Drawing.Size(498, 33);
+            this.fontList.Size = new System.Drawing.Size(251, 21);
             this.fontList.TabIndex = 5;
             this.fontList.SelectedIndexChanged += new System.EventHandler(this.fontList_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(16, 624);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(8, 324);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1108, 4);
+            this.label4.Size = new System.Drawing.Size(554, 2);
             this.label4.TabIndex = 6;
             // 
             // cancleButton
             // 
-            this.cancleButton.Location = new System.Drawing.Point(966, 633);
-            this.cancleButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cancleButton.Location = new System.Drawing.Point(483, 329);
             this.cancleButton.Name = "cancleButton";
-            this.cancleButton.Size = new System.Drawing.Size(150, 44);
+            this.cancleButton.Size = new System.Drawing.Size(75, 23);
             this.cancleButton.TabIndex = 2;
             this.cancleButton.Text = "Cancel";
             this.cancleButton.UseVisualStyleBackColor = true;
@@ -132,10 +124,9 @@
             // 
             // convertButton
             // 
-            this.convertButton.Location = new System.Drawing.Point(804, 633);
-            this.convertButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.convertButton.Location = new System.Drawing.Point(402, 329);
             this.convertButton.Name = "convertButton";
-            this.convertButton.Size = new System.Drawing.Size(150, 44);
+            this.convertButton.Size = new System.Drawing.Size(75, 23);
             this.convertButton.TabIndex = 2;
             this.convertButton.Text = "Convert";
             this.convertButton.UseVisualStyleBackColor = true;
@@ -150,10 +141,9 @@
             this.dataGridUsedFonts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCurrentFont,
             this.colConvertTo});
-            this.dataGridUsedFonts.Location = new System.Drawing.Point(30, 199);
-            this.dataGridUsedFonts.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dataGridUsedFonts.Location = new System.Drawing.Point(15, 103);
             this.dataGridUsedFonts.Name = "dataGridUsedFonts";
-            this.dataGridUsedFonts.Size = new System.Drawing.Size(1086, 342);
+            this.dataGridUsedFonts.Size = new System.Drawing.Size(543, 178);
             this.dataGridUsedFonts.TabIndex = 7;
             // 
             // colCurrentFont
@@ -175,38 +165,34 @@
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(16, 639);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblVersion.Location = new System.Drawing.Point(8, 332);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(121, 25);
+            this.lblVersion.Size = new System.Drawing.Size(60, 13);
             this.lblVersion.TabIndex = 8;
-            this.lblVersion.Text = "Version 1.0";
+            this.lblVersion.Text = "Version 1.1";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 68);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(12, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 25);
+            this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Directory";
             // 
             // directoryInput
             // 
             this.directoryInput.Enabled = false;
-            this.directoryInput.Location = new System.Drawing.Point(134, 66);
-            this.directoryInput.Margin = new System.Windows.Forms.Padding(6);
+            this.directoryInput.Location = new System.Drawing.Point(67, 34);
             this.directoryInput.Name = "directoryInput";
-            this.directoryInput.Size = new System.Drawing.Size(817, 31);
+            this.directoryInput.Size = new System.Drawing.Size(410, 20);
             this.directoryInput.TabIndex = 1;
             // 
             // DirectoryBrowse
             // 
-            this.DirectoryBrowse.Location = new System.Drawing.Point(966, 63);
-            this.DirectoryBrowse.Margin = new System.Windows.Forms.Padding(6);
+            this.DirectoryBrowse.Location = new System.Drawing.Point(483, 33);
             this.DirectoryBrowse.Name = "DirectoryBrowse";
-            this.DirectoryBrowse.Size = new System.Drawing.Size(150, 44);
+            this.DirectoryBrowse.Size = new System.Drawing.Size(75, 23);
             this.DirectoryBrowse.TabIndex = 2;
             this.DirectoryBrowse.Text = "Browse";
             this.DirectoryBrowse.UseVisualStyleBackColor = true;
@@ -214,9 +200,9 @@
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 688);
+            this.ClientSize = new System.Drawing.Size(571, 358);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.dataGridUsedFonts);
             this.Controls.Add(this.label4);
@@ -233,7 +219,6 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "MainWindow";
             this.Text = "Font Converter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);

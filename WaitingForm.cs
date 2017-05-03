@@ -12,13 +12,14 @@ namespace font_converter
 {
     public partial class WaitingForm : Form
     {
-        public WaitingForm(string message)
+        public WaitingForm()
         {
             InitializeComponent();
-
-            if (!string.IsNullOrEmpty(message))
-                progressStatus.Text = message;
         }
 
+        public void SetMessage(string message)
+        {
+            progressStatus.Text = message;
+        }
     }
 }

@@ -12,18 +12,21 @@ namespace font_converter
     public partial class MainWindow : Form
     {
         private WordHandler wordHandler;
-        private DataTable dtFonts;
+        private DataTable dtFonts; // mapping information: Old Fonts -> New Fonts
 
         public MainWindow()
         {
             InitializeComponent();
+
+            wordHandler = null;
+            dtFonts = new DataTable();
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
             try
             {
-                wordHandler = new WordHandler();
+                wordHandler = new WordHandler(loadDocumentsFinished, fontConvertFinished);
 
                 foreach (FontFamily font in System.Drawing.FontFamily.Families)
                 {
@@ -32,7 +35,6 @@ namespace font_converter
 
                 DataGridViewComboBoxColumn fontColumn = dataGridUsedFonts.Columns["colConvertTo"] as DataGridViewComboBoxColumn;
                 fontColumn.DataSource = fontList.Items;
-                dtFonts = new DataTable();
                 dtFonts.Columns.Add("currentfont");
                 dtFonts.Columns.Add("convertto");
                 dataGridUsedFonts.AutoGenerateColumns = false;
@@ -40,7 +42,8 @@ namespace font_converter
             }
             catch (Exception ex)
             {
-                wordHandler.Quit();
+                if (wordHandler != null)
+                    wordHandler.Quit();
                 MessageBox.Show("Error while loading application: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -52,25 +55,25 @@ namespace font_converter
             DialogResult result = openFileDlg.ShowDialog();
             if (result == DialogResult.OK)
             {
-                fileInput.Text = openFileDlg.FileName;
-                wordHandler.LoadDocument(openFileDlg.FileName, true);
-                List<string> usedFonts = wordHandler.GetAllUsedFonts();
-                dtFonts.Clear();
-                foreach (string font in usedFonts)
+                try
                 {
-                    DataRow newRow = dtFonts.NewRow();
-                    newRow["currentfont"] = font;
-                    newRow["convertto"] = "";
-                    dtFonts.Rows.Add(newRow);
+                    fileInput.Text = openFileDlg.FileName;
+                    // load document
+                    wordHandler.LoadDocument(openFileDlg.FileName, true);
+
+                    
                 }
-                for (int i = 0; i < dataGridUsedFonts.Rows.Count; i++)
-                    dataGridUsedFonts.Rows[i].HeaderCell.Value = (i + 1).ToString();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error while loading document: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void DirectoryBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog openFolderDlg = new FolderBrowserDialog();
+            //@todo: handle mutiple documents
         }
 
         #region Events
@@ -105,12 +108,34 @@ namespace font_converter
             {
                 wordHandler.ConvertFont(dtFonts);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Show list of current fonts are used in loaded document
+        /// </summary>
+        /// <param name="usedFonts">{List<string>} list of fonts are used in loaded documents</param>
+        private void loadDocumentsFinished(List<string> usedFonts)
+        {
+            dtFonts.Clear();
+            foreach (string font in usedFonts)
+            {
+                DataRow newRow = dtFonts.NewRow();
+                newRow["currentfont"] = font;
+                newRow["convertto"] = "";
+                dtFonts.Rows.Add(newRow);
+            }
+            for (int i = 0; i < dataGridUsedFonts.Rows.Count; i++)
+                dataGridUsedFonts.Rows[i].HeaderCell.Value = (i + 1).ToString();
+        }
+
+        private void fontConvertFinished()
+        {
+            MessageBox.Show("Done");
+        }
         #endregion // end Events
     }
 }
