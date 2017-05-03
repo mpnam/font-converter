@@ -11,8 +11,7 @@ namespace font_converter
 {
     public partial class MainWindow : Form
     {
-        private List<string> usedFonts;
-        private Microsoft.Office.Interop.Word.Application wordApp;
+        private WordHandler wordHandler;
         private DataTable dtFonts;
 
         public MainWindow()
@@ -24,7 +23,7 @@ namespace font_converter
         {
             try
             {
-                wordApp = new Microsoft.Office.Interop.Word.Application();
+                wordHandler = new WordHandler();
 
                 foreach (FontFamily font in System.Drawing.FontFamily.Families)
                 {
@@ -41,7 +40,7 @@ namespace font_converter
             }
             catch (Exception ex)
             {
-                wordApp.Quit();
+                wordHandler.Quit();
                 MessageBox.Show("Error while loading application: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -53,10 +52,9 @@ namespace font_converter
             DialogResult result = openFileDlg.ShowDialog();
             if (result == DialogResult.OK)
             {
-                InitializeDocument init = new InitializeDocument(wordApp, openFileDlg.FileName);
-                init.ShowDialog();
-
-                usedFonts = init.GetUsedFonts();
+                fileInput.Text = openFileDlg.FileName;
+                wordHandler.LoadDocument(openFileDlg.FileName, true);
+                List<string> usedFonts = wordHandler.GetAllUsedFonts();
                 dtFonts.Clear();
                 foreach (string font in usedFonts)
                 {
@@ -70,10 +68,10 @@ namespace font_converter
             }
         }
 
-        #region Functions
-
-
-        #endregion // end Functions
+        private void DirectoryBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog openFolderDlg = new FolderBrowserDialog();
+        }
 
         #region Events
 
@@ -84,9 +82,8 @@ namespace font_converter
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // try to close word application
-            if (wordApp != null)
-                wordApp.Quit();
+            if (wordHandler != null)
+                wordHandler.Quit();
         }
 
         private void fontList_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,9 +103,7 @@ namespace font_converter
         {
             try
             {
-                ConvertFont convert = new ConvertFont(wordApp, dtFonts);
-                convert.ShowDialog();
-                MessageBox.Show("Done", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                wordHandler.ConvertFont(dtFonts);
             }
             catch(Exception ex)
             {

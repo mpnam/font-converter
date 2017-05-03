@@ -54,6 +54,12 @@ namespace font_converter
                     p.Range.Select();
                 }
 
+                foreach (Microsoft.Office.Interop.Word.Shape s in doc.Shapes)
+                {
+                    s.TextFrame.TextRange.Font.Name = fontMapping[s.TextFrame.TextRange.Font.Name];
+                    s.TextFrame.TextRange.Select();
+                }
+
                 doc.Save();
             }
 

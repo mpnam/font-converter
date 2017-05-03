@@ -1,6 +1,6 @@
 ﻿namespace font_converter
 {
-    partial class InitializeDocument
+    partial class WaitingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,6 @@
             this.Name = "InitializeDocument";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "WaitingForm";
-            this.Load += new System.EventHandler(this.WaitingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
